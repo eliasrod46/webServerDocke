@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+    container_name: contenedroweb
+    volumes:
+      # Pasamos tu archivo de configuración de Nginx al contenedor
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      # Pasamos la carpeta con tus proyectos webs al contenedor
+      - ./sites:/var/www
