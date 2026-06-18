@@ -32,4 +32,4 @@ networks:
     name: gestoreconomico-backend_default
   ecommerce-backend:
     external: true
-    name: ecommerce-backend_default   # ← usar el nombre real del paso 1
+    name: ecommerce-backend_internal
