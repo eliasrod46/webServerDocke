@@ -13,6 +13,7 @@ services:
     networks:
       - default
       - ofipro-backend
+      - gestor-economico-backend
 
   certbot:
     image: certbot/certbot
@@ -25,3 +26,6 @@ networks:
   ofipro-backend:
     external: true
     name: ofipro-backend_default
+  gestor-economico-backend:
+    external: true
+    name: gestoreconomico-backend_default
