@@ -81,6 +81,16 @@ echo ""
 log "Contenedores Docker actuales:"
 docker ps -a --format 'table {{.Names}}\t{{.Status}}\t{{.Image}}' | head -40
 echo ""
+
+# Helper: gestionar contenedores v1 por CLI mientras se migran
+migrate_helper="$(dirname "$0")/docker-apps-helper.sh"
+if [[ -f "$migrate_helper" ]]; then
+  log "Helper docker disponible: bash docker-apps-helper.sh {list|start|stop} [nombre]"
+fi
+
+log "Contenedores detenidos (candidatos a 'docker start'):"
+docker ps -a --filter status=exited --format '  {{.Names}}' | head -20 || true
+echo ""
 log "Si una app aparece en CasaOS pero no en docker ps -a, desinstalala desde la UI."
 
 # --- Fase 6: Verificación ---
